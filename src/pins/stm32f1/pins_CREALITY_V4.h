@@ -81,8 +81,12 @@
 //
 // Filament Runout Sensor
 //
+#if ENABLED(EZOUT_ENABLE)
+  #define FIL_RUNOUT_PIN                    PC6
+#else
 #ifndef FIL_RUNOUT_PIN
   #define FIL_RUNOUT_PIN                    PA4   // "Pulled-high"
+#endif
 #endif
 
 //
@@ -169,9 +173,13 @@
   #define BTN_EN1                           PB10
   #define BTN_EN2                           PB14
 
+#if ENABLED(EZOUT_ENABLE)
+  #define BEEPER_PIN                      -1
+#else
   #ifndef HAS_PIN_27_BOARD
     #define BEEPER_PIN                      PC6
   #endif
+#endif
 
 #elif ENABLED(VET6_12864_LCD)
 
