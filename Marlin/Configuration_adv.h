@@ -844,7 +844,7 @@
    * differs, a mode set eeprom write will be completed at initialization.
    * Use the option below to force an eeprom write to a V3.1 probe regardless.
    */
-  #define BLTOUCH_SET_5V_MODE
+  //#define BLTOUCH_SET_5V_MODE
 
   /**
    * Safety: Activate if connecting a probe with an unknown voltage mode.
@@ -1232,7 +1232,7 @@
       // Use a height slightly above the estimated nozzle-to-probe Z offset.
       // For example, with an offset of -5, consider a starting height of -4.
       //
-      #define PROBE_OFFSET_WIZARD_START_Z -1.9
+      #define PROBE_OFFSET_WIZARD_START_Z -2.4
 
       // Set a convenient position to do the calibration (probing point and nozzle/bed-distance)
       #define PROBE_OFFSET_WIZARD_XY_POS { X_CENTER, Y_CENTER }
