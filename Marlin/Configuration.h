@@ -1181,7 +1181,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -42.5, -8, -1.85 }  //rummsi
+#define NOZZLE_TO_PROBE_OFFSET { -42.5, -8, -3.28 }  //rummsi
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1381,7 +1381,7 @@
 
 // The size of the printable area
 #define X_BED_SIZE 235  //rummsi
-#define Y_BED_SIZE 235  //rummsi
+#define Y_BED_SIZE 225  //rummsi
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1389,7 +1389,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 250  //rummsi
+#define Z_MAX_POS 245  //rummsi
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -2177,7 +2177,7 @@
 //
 // Add individual axis homing items (Home X, Home Y, and Home Z) to the LCD menu.
 //
-//#define INDIVIDUAL_AXIS_HOMING_MENU
+#define INDIVIDUAL_AXIS_HOMING_MENU  //rummsi
 //#define INDIVIDUAL_AXIS_HOMING_SUBMENU
 
 //
