@@ -21,6 +21,9 @@
  */
 #pragma once
 
+//###rummsi
+#define CONFIG_EXAMPLES_DIR "Creality/Ender-3/BigTreeTech SKR Mini E3 3.0"
+
 /**
  * Configuration.h
  *
@@ -62,7 +65,8 @@
 // Author info of this build printed to the host during boot and M115
 //###BigTreeTech Oficial
 #define STRING_CONFIG_H_AUTHOR "(BigTreeTech, SKR-mini-E3-V3.0)" // Who made the changes.
-//#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
+//###rummsi
+#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -128,7 +132,8 @@
  */
 //###BigTreeTech Oficial
 #define SERIAL_PORT_2 -1
-//#define BAUDRATE_2 250000   // :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000] Enable to override BAUDRATE
+//###rummsi
+#define BAUDRATE_2 115200   // :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000] Enable to override BAUDRATE
 
 /**
  * Select a third serial port on the board to use for communication with the host.
@@ -170,7 +175,6 @@
 #define Y_DRIVER_TYPE  TMC2209
 //###BigTreeTech Oficial
 #define Z_DRIVER_TYPE  TMC2209
-//###BigTreeTech Oficial
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
@@ -238,6 +242,7 @@
 
 // This defines the number of extruders
 // :[0, 1, 2, 3, 4, 5, 6, 7, 8]
+//###BigTreeTech Oficial
 #define EXTRUDERS 1
 
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
@@ -843,7 +848,8 @@
  */
 #define PREVENT_LENGTHY_EXTRUDE
 //###BigTreeTech Oficial
-#define EXTRUDE_MAXLENGTH 600
+//###rummsi  //Direct Drive
+#define EXTRUDE_MAXLENGTH 200
 
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
@@ -1139,7 +1145,8 @@
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
 //###BigTreeTech Oficial
-#define ENDSTOP_INTERRUPTS_FEATURE
+//###rummsi  //BLTouch
+//#define ENDSTOP_INTERRUPTS_FEATURE
 
 /**
  * Endstop Noise Threshold
@@ -1192,7 +1199,8 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 //###BigTreeTech Oficial
-#define DEFAULT_MAX_FEEDRATE          { 200, 200, 5, 25 }
+//###rummsi  //Direct Drive
+#define DEFAULT_MAX_FEEDRATE          { 500, 500, 5, 25 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1224,9 +1232,11 @@
 //###BigTreeTech Oficial
 #define DEFAULT_ACCELERATION           500  // X, Y, Z ... and E acceleration for printing moves
 //###BigTreeTech Oficial
-#define DEFAULT_RETRACT_ACCELERATION   500  // E acceleration for retracts
+//###rummsi  //Direct Drive
+#define DEFAULT_RETRACT_ACCELERATION  1000  // E acceleration for retracts
 //###BigTreeTech Oficial
-#define DEFAULT_TRAVEL_ACCELERATION    500  // X, Y, Z ... acceleration for travel (non printing) moves
+//###rummsi  //Direct Drive
+#define DEFAULT_TRAVEL_ACCELERATION   1000  // X, Y, Z ... acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -1266,7 +1276,8 @@
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.013 // (mm) Distance from real junction edge
+//###rummsi
+  #define JUNCTION_DEVIATION_MM 0.054 // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
@@ -1300,7 +1311,8 @@
 //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
-//#define USE_PROBE_FOR_Z_HOMING
+//###rummsi  //BLTouch
+#define USE_PROBE_FOR_Z_HOMING
 
 /**
  * Z_MIN_PROBE_PIN
@@ -1317,7 +1329,8 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-//#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
+//###rummsi  //BLTouch
+#define Z_MIN_PROBE_PIN PC14 // Pin 32 is the RAMPS default
 
 /**
  * Probe Type
@@ -1354,7 +1367,8 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+//###rummsi  //BLTouch
+#define BLTOUCH
 
 /**
  * MagLev V4 probe by MDD
@@ -1507,11 +1521,13 @@
  *     O-- FRONT --+
  */
 //###BigTreeTech Oficial
-#define NOZZLE_TO_PROBE_OFFSET { -40, -10, -1.85 }
+//###rummsi  //BLTouch
+#define NOZZLE_TO_PROBE_OFFSET { -42.5, -8, -3.28 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 10
+//###rummsi  //BLTouch
+#define PROBING_MARGIN 20
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_FEEDRATE (133*60)
@@ -1723,7 +1739,8 @@
 //###BigTreeTech Oficial
 #define X_BED_SIZE 235
 //###BigTreeTech Oficial
-#define Y_BED_SIZE 235
+//###rummsi  //Direct Drive
+#define Y_BED_SIZE 225
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1732,7 +1749,8 @@
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
 //###BigTreeTech Oficial
-#define Z_MAX_POS 250
+//###rummsi  //Direct Drive
+#define Z_MAX_POS 245  //rummsi
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -1760,7 +1778,8 @@
 #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
   #define MIN_SOFTWARE_ENDSTOP_X
   #define MIN_SOFTWARE_ENDSTOP_Y
-  #define MIN_SOFTWARE_ENDSTOP_Z
+//###rummsi  //BLTouch
+  //#define MIN_SOFTWARE_ENDSTOP_Z
   #define MIN_SOFTWARE_ENDSTOP_I
   #define MIN_SOFTWARE_ENDSTOP_J
   #define MIN_SOFTWARE_ENDSTOP_K
@@ -1800,7 +1819,8 @@
  * RAMPS-based boards use SERVO3_PIN for the first runout sensor.
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  */
-//#define FILAMENT_RUNOUT_SENSOR
+//###rummsi  //Filament run out sensor
+#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
 //###BigTreeTech Oficial
   #define FIL_RUNOUT_ENABLED_DEFAULT false // Enable the sensor on startup. Override with M412 followed by M500.
@@ -1854,12 +1874,14 @@
   // before executing the runout script. Useful for a sensor at the end of
   // a feed tube. Requires 4 bytes SRAM per sensor, plus 4 bytes overhead.
 //###BigTreeTech Oficial
-  //#define FILAMENT_RUNOUT_DISTANCE_MM 3
+//###rummsi  //Filament run out sensor
+  #define FILAMENT_RUNOUT_DISTANCE_MM 25
 
   #ifdef FILAMENT_RUNOUT_DISTANCE_MM
     // Enable this option to use an encoder disc that toggles the runout pin
     // as the filament moves. (Be sure to set FILAMENT_RUNOUT_DISTANCE_MM
     // large enough to avoid false positives.)
+//###rummsi  //Filament run out sensor
     //#define FILAMENT_MOTION_SENSOR
   #endif
 #endif
@@ -1904,19 +1926,23 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR
+//###rummsi  //BLTouch Auto-leveling
+#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
 //###BigTreeTech Oficial
-#define MESH_BED_LEVELING
+//###rummsi  //BLTouch Auto-leveling
+//#define MESH_BED_LEVELING
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable one of
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-//#define RESTORE_LEVELING_AFTER_G28
+//###rummsi  //BLTouch Auto-leveling
+#define RESTORE_LEVELING_AFTER_G28
 //###BigTreeTech Oficial
-#define ENABLE_LEVELING_AFTER_G28
+//###rummsi  //BLTouch Auto-leveling
+//#define ENABLE_LEVELING_AFTER_G28
 
 /**
  * Auto-leveling needs preheating
@@ -1984,7 +2010,8 @@
 
   // Set the number of grid points per dimension.
 //###BigTreeTech Oficial
-  #define GRID_MAX_POINTS_X 5
+//###rummsi  //BLTouch Auto-leveling
+  #define GRID_MAX_POINTS_X 6
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
@@ -1994,7 +2021,8 @@
 
     // Beyond the probed grid, continue the implied tilt?
     // Default is to maintain the height of the nearest edge.
-    //#define EXTRAPOLATE_BEYOND_GRID
+//###rummsi  //BLTouch Auto-leveling
+    #define EXTRAPOLATE_BEYOND_GRID
 
     //
     // Experimental Subdivision of the grid by Catmull-Rom method.
@@ -2037,7 +2065,8 @@
   //===========================================================================
 
   #define MESH_INSET 10          // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 3    // Don't use more than 7 points per axis, implementation limited.
+//###rummsi  //BLTouch Auto-leveling
+  #define GRID_MAX_POINTS_X 6    // Don't use more than 7 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   //#define MESH_G28_REST_ORIGIN // After homing all axes ('G28' or 'G28 XYZ') rest Z at Z_MIN_POS
@@ -2123,7 +2152,8 @@
  * - Allows Z homing only when XY positions are known and trusted.
  * - If stepper drivers sleep, XY homing may be required again before Z homing.
  */
-//#define Z_SAFE_HOMING
+//###rummsi  //BLTouch Auto-leveling
+#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
@@ -2217,7 +2247,8 @@
 #if ENABLED(EEPROM_SETTINGS)
 //###BigTreeTech Oficial
   #define EEPROM_AUTO_INIT    // Init EEPROM automatically on any errors.
-  //#define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build.
+//###rummsi
+  #define EEPROM_INIT_NOW     // Init EEPROM on first boot after a new build.
 #endif
 
 // @section host
@@ -2582,7 +2613,8 @@
 //
 // Add individual axis homing items (Home X, Home Y, and Home Z) to the LCD menu.
 //
-//#define INDIVIDUAL_AXIS_HOMING_MENU
+//###rummsi  //BLTouch Auto-leveling
+#define INDIVIDUAL_AXIS_HOMING_MENU
 //#define INDIVIDUAL_AXIS_HOMING_SUBMENU
 
 //
