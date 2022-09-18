@@ -1266,7 +1266,7 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN  //###BigTreeTech Oficial
+#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN  //###BigTreeTech Oficial  //###BLTouch
 
 // Force the use of the probe for Z-axis homing
 //#define USE_PROBE_FOR_Z_HOMING
@@ -1323,7 +1323,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+#define BLTOUCH  //###BLTouch
 
 /**
  * MagLev V4 probe by MDD
@@ -1475,7 +1475,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -40, -10, -1.85 }  //###BigTreeTech Oficial
+#define NOZZLE_TO_PROBE_OFFSET { -44, -7, 0 }  //###BigTreeTech Oficial  //###BLTouch
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1723,7 +1723,7 @@
 #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
   #define MIN_SOFTWARE_ENDSTOP_X
   #define MIN_SOFTWARE_ENDSTOP_Y
-  #define MIN_SOFTWARE_ENDSTOP_Z
+  //#define MIN_SOFTWARE_ENDSTOP_Z  //###BLTouch
   #define MIN_SOFTWARE_ENDSTOP_I
   #define MIN_SOFTWARE_ENDSTOP_J
   #define MIN_SOFTWARE_ENDSTOP_K
@@ -1865,9 +1865,9 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_BILINEAR  //###BLTouch
 //#define AUTO_BED_LEVELING_UBL
-#define MESH_BED_LEVELING  //###BigTreeTech Oficial
+//#define MESH_BED_LEVELING  //###BigTreeTech Oficial  //###BLTouch
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable one of
@@ -2078,7 +2078,7 @@
  * - Allows Z homing only when XY positions are known and trusted.
  * - If stepper drivers sleep, XY homing may be required again before Z homing.
  */
-//#define Z_SAFE_HOMING
+#define Z_SAFE_HOMING  //###BLTouch
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
@@ -2131,7 +2131,7 @@
 
   // Or, set the default skew factors directly here
   // to override the above measurements:
-  #define XY_SKEW_FACTOR 0.0
+  //#define XY_SKEW_FACTOR 0.0  //###BLTouch
 
   //#define SKEW_CORRECTION_FOR_Z
   #if ENABLED(SKEW_CORRECTION_FOR_Z)
@@ -2140,8 +2140,8 @@
     #define YZ_DIAG_AC 282.8427124746
     #define YZ_DIAG_BD 282.8427124746
     #define YZ_SIDE_AD 200
-    #define XZ_SKEW_FACTOR 0.0
-    #define YZ_SKEW_FACTOR 0.0
+    //#define XZ_SKEW_FACTOR 0.0  //###BLTouch
+    //#define YZ_SKEW_FACTOR 0.0  //###BLTouch
   #endif
 
   // Enable this option for M852 to set skew at runtime
@@ -2169,7 +2169,7 @@
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
 #if ENABLED(EEPROM_SETTINGS)
   #define EEPROM_AUTO_INIT    // Init EEPROM automatically on any errors.  //###BigTreeTech Oficial
-  //#define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build.
+  #define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build.  //###BLTouch
 #endif
 
 // @section host
