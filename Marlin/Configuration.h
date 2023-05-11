@@ -856,7 +856,8 @@
  */
 #define PREVENT_LENGTHY_EXTRUDE
 //###BigTreeTech Oficial
-#define EXTRUDE_MAXLENGTH 600
+//Direct Drive
+#define EXTRUDE_MAXLENGTH 200
 
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
@@ -1204,7 +1205,8 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 //###BigTreeTech Oficial
-#define DEFAULT_MAX_FEEDRATE          { 200, 200, 5, 25 }
+//Direct Drive
+#define DEFAULT_MAX_FEEDRATE          { 500, 500, 5, 25 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1236,9 +1238,11 @@
 //###BigTreeTech Oficial
 #define DEFAULT_ACCELERATION           500    // X, Y, Z and E acceleration for printing moves
 //###BigTreeTech Oficial
-#define DEFAULT_RETRACT_ACCELERATION   500    // E acceleration for retracts
+//Direct Drive
+#define DEFAULT_RETRACT_ACCELERATION  1000  // E acceleration for retracts
 //###BigTreeTech Oficial
-#define DEFAULT_TRAVEL_ACCELERATION    500    // X, Y, Z acceleration for travel (non printing) moves
+//Direct Drive
+#define DEFAULT_TRAVEL_ACCELERATION   1000  // X, Y, Z ... acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -1740,7 +1744,8 @@
 //###BigTreeTech Oficial
 #define X_BED_SIZE 235
 //###BigTreeTech Oficial
-#define Y_BED_SIZE 235
+//Direct Drive
+#define Y_BED_SIZE 225
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1749,7 +1754,8 @@
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
 //###BigTreeTech Oficial
-#define Z_MAX_POS 250
+//Direct Drive
+#define Z_MAX_POS 245  //rummsi
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -1818,7 +1824,8 @@
  * RAMPS-based boards use SERVO3_PIN for the first runout sensor.
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  */
-//#define FILAMENT_RUNOUT_SENSOR
+//Filament run out sensor
+#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
 //###BigTreeTech Oficial
   #define FIL_RUNOUT_ENABLED_DEFAULT false // Enable the sensor on startup. Override with M412 followed by M500.
@@ -1872,12 +1879,14 @@
   // before executing the runout script. Useful for a sensor at the end of
   // a feed tube. Requires 4 bytes SRAM per sensor, plus 4 bytes overhead.
 //###BigTreeTech Oficial
-  //#define FILAMENT_RUNOUT_DISTANCE_MM 3
+//Filament run out sensor
+  #define FILAMENT_RUNOUT_DISTANCE_MM 25
 
   #ifdef FILAMENT_RUNOUT_DISTANCE_MM
     // Enable this option to use an encoder disc that toggles the runout pin
     // as the filament moves. (Be sure to set FILAMENT_RUNOUT_DISTANCE_MM
     // large enough to avoid false positives.)
+//Filament run out sensor
     //#define FILAMENT_MOTION_SENSOR
   #endif
 #endif
@@ -2248,7 +2257,8 @@
 #if ENABLED(EEPROM_SETTINGS)
 //###BigTreeTech Oficial
   #define EEPROM_AUTO_INIT    // Init EEPROM automatically on any errors.
-  //#define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build.
+//###EXTRAS
+  #define EEPROM_INIT_NOW     // Init EEPROM on first boot after a new build.
 #endif
 
 // @section host
