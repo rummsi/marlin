@@ -854,8 +854,7 @@
  * Note: For Bowden Extruders make this large enough to allow load/unload.
  */
 #define PREVENT_LENGTHY_EXTRUDE
-//###BigTreeTech Oficial
-//Direct Drive
+//###BigTreeTech Oficial    //sprite extruder
 #define EXTRUDE_MAXLENGTH 200
 
 //===========================================================================
@@ -1195,7 +1194,7 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-//###BigTreeTech Oficial
+//###BigTreeTech Oficial    //sprite extruder
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 434.9 }  //ESTEP configurado para o sprite extruder
 
 /**
@@ -1203,8 +1202,7 @@
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-//###BigTreeTech Oficial
-//Direct Drive
+//###BigTreeTech Oficial    //sprite extruder
 #define DEFAULT_MAX_FEEDRATE          { 500, 500, 5, 25 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
@@ -1236,11 +1234,9 @@
  */
 //###BigTreeTech Oficial
 #define DEFAULT_ACCELERATION           500    // X, Y, Z and E acceleration for printing moves
-//###BigTreeTech Oficial
-//Direct Drive
+//###BigTreeTech Oficial    //sprite extruder
 #define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
-//###BigTreeTech Oficial
-//Direct Drive
+//###BigTreeTech Oficial    //sprite extruder
 #define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
@@ -1315,8 +1311,7 @@
 //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
-//BLTouch
-#define USE_PROBE_FOR_Z_HOMING
+#define USE_PROBE_FOR_Z_HOMING    //####  makenprint
 
 /**
  * Z_MIN_PROBE_PIN
@@ -1333,8 +1328,7 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-//###  makenprint
-#define Z_MIN_PROBE_PIN PC14 // Pin 32 is the RAMPS default
+#define Z_MIN_PROBE_PIN PC14 // Pin 32 is the RAMPS default    //####  makenprint
 
 /**
  * Probe Type
@@ -1371,7 +1365,6 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//BLTouch
 #define BLTOUCH    //####  makenprint
 
 /**
@@ -1525,13 +1518,11 @@
  *     O-- FRONT --+
  */
 //###BigTreeTech Oficial
-//BLTouch - sprite config
-#define NOZZLE_TO_PROBE_OFFSET { -34, -42, -3.50 }
+#define NOZZLE_TO_PROBE_OFFSET { -34, -42, -3.97 }    //sprite extruder
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-//BLTouch
-#define PROBING_MARGIN 10
+#define PROBING_MARGIN 10    //####  makenprint
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_FEEDRATE (133*60)
@@ -1741,11 +1732,9 @@
 
 // The size of the printable area
 //###BigTreeTech Oficial
-//Direct Drive  alterar para 219 extruder sprite
-#define X_BED_SIZE 219
+#define X_BED_SIZE 219    //sprite extruder
 //###BigTreeTech Oficial
-//Direct Drive  alterar para 227 extruder sprite
-#define Y_BED_SIZE 227
+#define Y_BED_SIZE 227    //sprite extruder
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1754,8 +1743,7 @@
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
 //###BigTreeTech Oficial
-//Direct Drive  alterar para 242 extruder sprite
-#define Z_MAX_POS 242
+#define Z_MAX_POS 242    //sprite extruder
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -1827,7 +1815,7 @@
 #define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
 //###BigTreeTech Oficial
-  #define FIL_RUNOUT_ENABLED_DEFAULT false // Enable the sensor on startup. Override with M412 followed by M500.
+  #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.    //EXTRAS
   #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
 
   #define FIL_RUNOUT_STATE     LOW        // Pin state indicating that filament is NOT present.
@@ -1929,11 +1917,9 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-//BLTouch
 #define AUTO_BED_LEVELING_BILINEAR    //####  makenprint
 //#define AUTO_BED_LEVELING_UBL
 //###BigTreeTech Oficial
-//BLTouch
 //#define MESH_BED_LEVELING    //####  makenprint
 
 /**
@@ -2013,7 +1999,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 6    //####  makenprint
+  #define GRID_MAX_POINTS_X 3    //####  makenprint
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
@@ -2083,7 +2069,7 @@
 #if ENABLED(LCD_BED_LEVELING)
   #define MESH_EDIT_Z_STEP  0.025 // (mm) Step size while manually probing Z axis.
   #define LCD_PROBE_Z_RANGE 4     // (mm) Z Range centered on Z_MIN_POS for LCD Z adjustment
-  //#define MESH_EDIT_MENU        // Add a menu to edit mesh points
+  #define MESH_EDIT_MENU          // Add a menu to edit mesh points    //EXTRAS
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
@@ -2152,7 +2138,6 @@
  * - Allows Z homing only when XY positions are known and trusted.
  * - If stepper drivers sleep, XY homing may be required again before Z homing.
  */
-//BLTouch
 #define Z_SAFE_HOMING    //####  makenprint
 
 #if ENABLED(Z_SAFE_HOMING)
@@ -2614,9 +2599,8 @@
 //
 // Add individual axis homing items (Home X, Home Y, and Home Z) to the LCD menu.
 //
-//BLTouch
-#define INDIVIDUAL_AXIS_HOMING_MENU
-//#define INDIVIDUAL_AXIS_HOMING_SUBMENU
+#define INDIVIDUAL_AXIS_HOMING_MENU    //####  EXTRAS
+#define INDIVIDUAL_AXIS_HOMING_SUBMENU    //####  EXTRAS
 
 //
 // SPEAKER/BUZZER

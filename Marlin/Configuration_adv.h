@@ -915,7 +915,6 @@
 
   // Safety: The probe needs time to recognize the command.
   //         Minimum command delay (ms). Enable and increase if needed.
-//BLTouch
   #define BLTOUCH_DELAY 200    //####  makenprint
 
   /**
@@ -962,7 +961,6 @@
    *
    * Set the default state here, change with 'M401 S' or UI, use M500 to save, M502 to reset.
    */
-//BLTouch
   #define BLTOUCH_HS_MODE true    //####  makenprint
 
   // Safety: Enable voltage mode settings in the LCD menu.
@@ -1384,8 +1382,7 @@
 //#define LCD_BACKLIGHT_TIMEOUT_MINS 1  // (minutes) Timeout before turning off the backlight
 
 #if HAS_BED_PROBE && EITHER(HAS_MARLINUI_MENU, HAS_TFT_LVGL_UI)
-//BLTouch
-  #define PROBE_OFFSET_WIZARD       // Add a Probe Z Offset calibration option to the LCD menu
+  #define PROBE_OFFSET_WIZARD       // Add a Probe Z Offset calibration option to the LCD menu    //####  makenprint
   #if ENABLED(PROBE_OFFSET_WIZARD)
     /**
      * Enable to init the Probe Z-Offset when starting the Wizard.
@@ -1393,7 +1390,7 @@
      * For example, with an offset of -5, consider a starting height of -4.
      */
 //BLTouch alterar mediante a altura para a mesa
-    #define PROBE_OFFSET_WIZARD_START_Z -1.8
+    #define PROBE_OFFSET_WIZARD_START_Z -3.0
 
     // Set a convenient position to do the calibration (probing point and nozzle/bed-distance)
     //#define PROBE_OFFSET_WIZARD_XY_POS { X_CENTER, Y_CENTER }
@@ -2120,12 +2117,10 @@
 //###BigTreeTech Oficial
   #define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
 
-//BLTouch
-  #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
+  #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping    //####  makenprint
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
     //#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
-//###EXTRAS
-    #define BABYSTEP_ZPROBE_GFX_OVERLAY     // Enable graphical overlay on Z-offset editor
+    #define BABYSTEP_ZPROBE_GFX_OVERLAY     // Enable graphical overlay on Z-offset editor    //####  makenprint
   #endif
 #endif
 
@@ -2236,7 +2231,6 @@
  * Repeatedly attempt G29 leveling until it succeeds.
  * Stop after G29_MAX_RETRIES attempts.
  */
-//BLTouch
 #define G29_RETRY_AND_RECOVER    //####  makenprint
 #if ENABLED(G29_RETRY_AND_RECOVER)
   #define G29_MAX_RETRIES 3
@@ -2428,13 +2422,10 @@
 // The number of linear moves that can be in the planner at once.
 // The value of BLOCK_BUFFER_SIZE must be a power of 2 (e.g., 8, 16, 32)
 #if BOTH(SDSUPPORT, DIRECT_STEPPING)
-//###EXTRAS
   #define BLOCK_BUFFER_SIZE  32    //####  makenprint
 #elif ENABLED(SDSUPPORT)
-//###EXTRAS
   #define BLOCK_BUFFER_SIZE 64    //####  makenprint
 #else
-//###EXTRAS
   #define BLOCK_BUFFER_SIZE 64    //####  makenprint
 #endif
 
@@ -2451,7 +2442,6 @@
 // For debug-echo: 128 bytes for the optimal speed.
 // Other output doesn't need to be that speedy.
 // :[0, 2, 4, 8, 16, 32, 64, 128, 256]
-//###EXTRAS
 #define TX_BUFFER_SIZE 128    //####  makenprint
 
 // Host Receive Buffer Size
