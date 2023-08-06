@@ -1195,7 +1195,7 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 //###BigTreeTech Oficial    //sprite extruder
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 434.9 }  //ESTEP configurado para o sprite extruder
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 424.9 }  //ESTEP configurado para o sprite extruder
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
@@ -1518,7 +1518,7 @@
  *     O-- FRONT --+
  */
 //###BigTreeTech Oficial
-#define NOZZLE_TO_PROBE_OFFSET { -34, -42, -3.97 }    //sprite extruder
+#define NOZZLE_TO_PROBE_OFFSET { -34, -42, -2.95 }    //sprite extruder
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
